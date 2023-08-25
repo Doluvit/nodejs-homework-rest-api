@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 const Joi = require("joi");
 const { handleMongooseError } = require("../helpers");
 
-const contactSchema = Schema(
+const contactSchema = new Schema(
   {
     name: {
       type: String,
@@ -21,6 +21,11 @@ const contactSchema = Schema(
       type: Boolean,
       default: false,
     },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: "user",
+      required: true,
+    }
   },
   {
     versionKey: false,
@@ -35,7 +40,7 @@ const addSchema = Joi.object({
     .message(
       "Invalid phone number format. Please use the format (XXX) XXX-XXXX."
     ),
-  favorite: Joi.boolean,
+  favorite: Joi.boolean(),
 });
 
 const updateStatusContactSchema = Joi.object({
