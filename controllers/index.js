@@ -13,6 +13,8 @@ const {
   getCurrent,
   logout,
   updateAvatar,
+  verifyEmail,
+  resetVerifyEmail,
 } = require("./users");
 
 module.exports = {
@@ -27,4 +29,6 @@ module.exports = {
   getCurrent,
   logout,
   updateAvatar,
+  verifyEmail,
+  resetVerifyEmail,
 };
